@@ -1,6 +1,6 @@
 # python3,11のイメージをダウンロード
 FROM python:3.11-buster
-# pythonの出力表示をDockerように調整
+# pythonの出力表示をDocker用に調整
 ENV PYTHONUNBUFFERED=1
 
 WORKDIR /src
