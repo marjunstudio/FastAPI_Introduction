@@ -3,7 +3,7 @@ FROM python:3.11-buster
 # pythonの出力表示をDockerように調整
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR / src
+WORKDIR /src
 
 # pipを使ってpoetryをインストール
 RUN pip install poetry
