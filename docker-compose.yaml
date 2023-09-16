@@ -3,7 +3,7 @@ services:
   demo-app:
     build: .
     volumes:
-      - .dockerenv:/src/.venv
+      - .dockervenv:/src/.venv
       - .:/src
     ports:
       - 8000:8000 #ホストマシンのポート8000をdocker内のポート8000に接続する
