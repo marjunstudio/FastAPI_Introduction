@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 import api.cruds.task as task_crud
 from api.db import get_db
@@ -15,8 +16,8 @@ async def list_tasks(db: Session = Depends(get_db)):
 
 # タスクを作成
 @router.post("/tasks", response_model=task_schema.TaskCreateResponse)
-async def create_task(task_body: task_schema.TaskCreate, db: Session = Depends(get_db)):
-  return task_crud.create_task(db, task_body)
+async def create_task(task_body: task_schema.TaskCreate, db: AsyncSession = Depends(get_db)):
+  return await task_crud.create_task(db, task_body)
 
 # タスクの更新 
 @router.put("/tasks/{task_id}", response_model=task_schema.TaskCreateResponse)
