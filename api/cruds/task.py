@@ -36,9 +36,9 @@ async def update_task(
   original.title  = task_create.title
   db.add(original)
   await db.commit()
-  await ßdb.refresh(original)
+  await db.refresh(original)
   return original
 
-def delete_task(db: Session, original: task_model.Task) -> None:
-  db.delete(original)
-  db.commit()
+async def delete_task(db: AsyncSession, original: task_model.Task) -> None:
+  await db.delete(original)
+  await db.commit()
